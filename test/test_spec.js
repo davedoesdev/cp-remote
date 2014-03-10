@@ -16,7 +16,7 @@ function expr(v) { return v; }
 
 function test(hosts, done)
 {
-    expr(expect(process.env.SSH_CONNECTION).not.to.exist);
+    var ssh_conn = process.env.SSH_CONNECTION;
 
     async.each(hosts, function (host, cb)
     {
@@ -54,6 +54,7 @@ function test(hosts, done)
                 hmac.update(data);
                 expect(msg.digest).to.equal(hmac.digest('base64'));
                 expr(expect(msg.ssh).to.exist);
+                expect(msg.ssh).not.to.equal(ssh_conn);
                 finished = true;
                 //child.send({type: 'exit'});
                 child.disconnect();
