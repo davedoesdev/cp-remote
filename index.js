@@ -31,17 +31,17 @@ process.send({ foo: 'bar' });
 
 Client:
 
+- SSH client (e.g. [OpenSSH](http://www.openssh.com)), configured for password-less logon to the remote host (e.g. using a private key).
 - [Node.js](http://www.nodejs.org) (of course)
 - [Bash](https://www.gnu.org/software/bash/bash.html)
 - [socat](http://www.dest-unreach.org/socat/)
-- SSH client (e.g. [OpenSSH](http://www.openssh.com)), configured for password-less logon to the remote host (e.g. using a private key).
 
 Remote host:
 
-- Node.js
+- SSH server (e.g. [OpenSSH](http://www.openssh.com))
+- Node.js (`node` command should be in the remote `PATH` of SSH sessions)
 - [Python](http://www.python.org) (it provides access to [`socketpair`](http://pubs.opengroup.org/onlinepubs/009695399/functions/socketpair.html), Node does not)
 - [socat](http://www.dest-unreach.org/socat/)
-- SSH server (e.g. [OpenSSH](http://www.openssh.com))
 
 ## Installation
 
