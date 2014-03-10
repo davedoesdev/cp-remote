@@ -1,7 +1,7 @@
 {
   "name": "cp-remote",
   "description": "Remote child_process runner with message support",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/davedoesdev/cp-remote",
   "author": {
     "name": "David Halls",
