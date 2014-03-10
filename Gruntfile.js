@@ -1,6 +1,8 @@
 /*jslint node: true */
 "use strict";
 
+var remote_index = process.argv.indexOf('--remote');
+
 module.exports = function (grunt)
 {
     grunt.initConfig(
@@ -27,7 +29,7 @@ module.exports = function (grunt)
 
         exec: {
             cover: {
-                cmd: './node_modules/.bin/istanbul cover ./node_modules/.bin/grunt -- test ' + process.argv.slice(3).join(' ')
+                cmd: './node_modules/.bin/istanbul cover ./node_modules/.bin/grunt -- test ' + (remote_index < 0 ? /* istanbul ignore next */ '' : process.argv.slice(remote_index).join(' '))
             },
 
             check_cover: {
