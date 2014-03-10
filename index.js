@@ -30,6 +30,8 @@ process.on('message', function (msg)
 process.send({ foo: 'bar' });
 ```
 
+The API is described [here](#tableofcontents).
+
 ## Pre-requisites
 
 Client:
