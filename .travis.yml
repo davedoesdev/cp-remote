@@ -8,9 +8,8 @@ before_install:
   - ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''
   - cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
   - ssh-keyscan -t rsa localhost >> ~/.ssh/known_hosts
-  - echo ~/.nvm/nvm.sh > ~/.bashrc.new
+  - echo . ~/.nvm/nvm.sh > ~/.bashrc.new
   - cat ~/.bashrc >> ~/.bashrc.new
   - mv ~/.bashrc.new ~/.bashrc
-  - ls ~/.nvm
-  - cat ~/.bashrc
+  - ssh localhost node --version
 script: npm run travis-test
