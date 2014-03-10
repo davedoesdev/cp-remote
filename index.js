@@ -125,6 +125,6 @@ function run(host, module_path)
         Array.prototype.slice.call(arguments, 2))).toString('hex'));
 
     return child;
-};
+}
 
 exports.run = run;
