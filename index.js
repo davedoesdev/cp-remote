@@ -7,6 +7,7 @@ Example:
 
 ```javascript
 var cp_remote = require('cp-remote');
+var assert = require('assert');
 var remote = cp_remote.run('host', '/path/on/host/to/sub.js', 'foo', { answer: 42 });
 remote.on('message', function (msg)
 {
@@ -18,11 +19,13 @@ remote.send({ hello: 'world' });
 You might implement the remote script, `sub.js`, like this:
 
 ```javascript
+var assert = require('assert');
 assert.equal(process.argv[2], 'foo')
-assert.equal(process.argv[3], { answer: 42 });
+assert.deepEqual(process.argv[3], { answer: 42 });
 process.on('message', function (msg)
 {
     assert.deepEqual(msg, { hello: 'world' });
+    process.disconnect();
 });
 process.send({ foo: 'bar' });
 ```
