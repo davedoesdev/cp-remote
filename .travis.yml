@@ -11,5 +11,6 @@ before_install:
   - echo ~/.nvm/nvm.sh > ~/.bashrc.new
   - cat ~/.bashrc >> ~/.bashrc.new
   - mv ~/.bashrc.new ~/.bashrc
+  - ls ~/.nvm
   - cat ~/.bashrc
 script: npm run travis-test
