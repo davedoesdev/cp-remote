@@ -1,0 +1,55 @@
+{
+  "name": "cp-remote",
+  "description": "Remote child_process runner with message support",
+  "version": "0.0.1",
+  "homepage": "https://github.com/davedoesdev/cp-remote",
+  "author": {
+    "name": "David Halls",
+    "email": "dave@davedoesdev.com",
+    "url": "http://www.davedoesdev.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davedoesdev/cp-remote.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davedoesdev/cp-remote/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/davedoesdev/cp-remote/blob/master/LICENCE"
+    }
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt lint test",
+    "travis-test": "grunt lint test coverage coveralls"
+  },
+  "directories": {
+    "test": "test",
+    "lib": "lib"
+  },
+  "keywords": [
+    "child_process",
+    "ipc",
+    "message",
+    "ssh",
+    "socat",
+    "python"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-cli": "~0.1.13",
+    "grunt-jslint": "~1.1.5",
+    "grunt-cafe-mocha": "~0.1.11",
+    "grunt-apidox": "~0.1.4",
+    "chai": "~1.9.0",
+    "istanbul": "~0.2.6",
+    "grunt-exec": "~0.4.5",
+    "coveralls": "~2.8.0",
+    "yargs": "~1.2.1"
+  }
+}

@@ -1,0 +1,33 @@
+digraph { 
+    rankdir = LR
+    subgraph cluster_client {
+        label = "Client"
+        socat_client [
+            label = "socat"
+        ]
+        "Node\ncp-remote" -> socat_client [
+            label = "NODE_CHANNEL_FD"
+            dir="both"
+        ]
+        socat_client -> "ssh host" [dir="both"]
+    }
+    subgraph cluster_remote_host {
+        label = "Remote Host"
+        subgraph cluster_python {
+            label = "Python"
+            style = "dotted"
+            socat_remote [
+                label = "socat"
+            ]
+            socat_remote -> "Node\nsub.js" [
+                label = "     socketpair     "
+                headlabel = "NODE_CHANNEL_FD"
+                labeldistance = 8
+                labelangle = 10
+                dir="both"
+            ]
+        }
+        sshd -> socat_remote [dir="both"]
+    }
+    "ssh host" -> sshd [dir="both"]
+} 
