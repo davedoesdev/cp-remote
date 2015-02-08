@@ -4,7 +4,10 @@
 var crypto = require('crypto'),
     key = new Buffer(process.argv[2], 'hex');
 
-process.send({type: 'start'});
+process.nextTick(function ()
+{
+    process.send({type: 'start'});
+});
 
 process.on('message', function (msg)
 {
