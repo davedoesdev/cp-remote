@@ -60,7 +60,7 @@ You can't pass handles to a remote child process like you can with local child p
 
 ## How it works
 
-![How it works](http://githubraw.herokuapp.com/davedoesdev/cp-remote/master/diagrams/how_it_works.svg)
+![How it works](http://rawgit.davedoesdev.com/davedoesdev/cp-remote/master/diagrams/how_it_works.svg)
 
 - `cp-remote` calls [`child_process.spawn`](http://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) to run a Bash script, [`cp-remote.sh`](cp-remote.sh). The IPC channel will be on `$NODE_CHANNEL_FD`.
 - `cp-remote.sh` runs `socat`, telling it to relay data between `$NODE_CHANNEL_FD` and an SSH connection to the remote host.
@@ -97,7 +97,7 @@ grunt lint
 grunt coverage
 ```
 
-[Instanbul](http://gotwarlost.github.io/istanbul/) results are available [here](http://githubraw.herokuapp.com/davedoesdev/cp-remote/master/coverage/lcov-report/index.html).
+[Instanbul](http://gotwarlost.github.io/istanbul/) results are available [here](http://rawgit.davedoesdev.com/davedoesdev/cp-remote/master/coverage/lcov-report/index.html).
 
 Coveralls page is [here](https://coveralls.io/r/davedoesdev/cp-remote).
 
