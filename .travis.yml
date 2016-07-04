@@ -25,6 +25,5 @@ before_install:
   - ssh localhost node --version
   - mkdir -p "$HOME/.local/bin"
   - ln -s "$(which python$PYVER)" "$HOME/.local/bin/python"
-  - ssh localhost export
   - ssh localhost python --version
 script: npm run travis-test
