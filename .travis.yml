@@ -11,6 +11,7 @@ addons:
   apt:
     packages:
       - socat
+      - python3
 before_install:
   - ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''
   - cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
