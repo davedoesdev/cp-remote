@@ -18,5 +18,7 @@ before_install:
   - echo . ~/.nvm/nvm.sh > ~/.bashrc.new
   - cat ~/.bashrc >> ~/.bashrc.new
   - mv ~/.bashrc.new ~/.bashrc
+  - cat ~/.bashrc
+  - nvm alias default
   - ssh localhost node --version
 script: npm run travis-test
