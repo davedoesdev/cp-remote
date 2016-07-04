@@ -1,9 +1,14 @@
+sudo: false
 language: node_js
 node_js:
   - 0.12
+  - 4
+  - 6
+addons:
+  apt:
+    packages:
+      - socat
 before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq socat
   - ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''
   - cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
   - ssh-keyscan -t rsa localhost >> ~/.ssh/known_hosts

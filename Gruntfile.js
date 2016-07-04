@@ -1,22 +1,25 @@
 /*jslint node: true */
 "use strict";
 
-var remote_index = process.argv.indexOf('--remote');
+var remote_index = -1;
+for (var i = 0; i < process.argv.length; i += 1)
+{
+    if (process.argv[i].lastIndexOf('--remote=', 0) === 0)
+    {
+        remote_index = i;
+        break;
+    }
+}
 
 module.exports = function (grunt)
 {
     grunt.initConfig(
     {
-        jslint: {
-            all: {
-                src: [ 'Gruntfile.js', 'index.js', 'test/**/*.js' ],
-                directives: {
-                    white: true
-                }
-            }
+        jshint: {
+            src: [ 'Gruntfile.js', 'index.js', 'test/**/*.js' ]
         },
 
-        cafemocha: {
+        mochaTest: {
             src: 'test/test_spec.js'
         },
             
@@ -27,39 +30,39 @@ module.exports = function (grunt)
             extraHeadingLevels: 1
         },
 
-        exec: {
+        shell: {
             cover: {
-                cmd: './node_modules/.bin/istanbul cover ./node_modules/.bin/grunt -- test ' + (remote_index < 0 ? /* istanbul ignore next */ '' : process.argv.slice(remote_index).join(' '))
+                command: './node_modules/.bin/istanbul cover ./node_modules/.bin/grunt -- test ' + (remote_index < 0 ? /* istanbul ignore next */ '' : process.argv.slice(remote_index).join(' '))
             },
 
             check_cover: {
-                cmd: './node_modules/.bin/istanbul check-coverage --statement 100 --branch 100 --function 100 --line 100'
+                command: './node_modules/.bin/istanbul check-coverage --statement 100 --branch 100 --function 100 --line 100'
             },
 
             coveralls: {
-                cmd: 'cat coverage/lcov.info | coveralls'
+                command: 'cat coverage/lcov.info | coveralls'
             },
 
             diagrams: {
-                cmd: 'dot diagrams/how_it_works.dot -Tsvg -odiagrams/how_it_works.svg'
+                command: 'dot diagrams/how_it_works.dot -Tsvg -odiagrams/how_it_works.svg'
             },
 
             pack: {
-                cmd: './pack.sh'
+                command: './pack.sh'
             }
         }
     });
     
-    grunt.loadNpmTasks('grunt-jslint');
-    grunt.loadNpmTasks('grunt-cafe-mocha');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-apidox');
-    grunt.loadNpmTasks('grunt-exec');
+    grunt.loadNpmTasks('grunt-shell');
 
-    grunt.registerTask('lint', 'jslint:all');
-    grunt.registerTask('test', 'cafemocha');
-    grunt.registerTask('docs', ['exec:diagrams', 'apidox']);
-    grunt.registerTask('pack', 'exec:pack');
-    grunt.registerTask('coverage', ['exec:cover', 'exec:check_cover']);
+    grunt.registerTask('lint', 'jshint');
+    grunt.registerTask('test', 'mochaTest');
+    grunt.registerTask('docs', ['shell:diagrams', 'apidox']);
+    grunt.registerTask('pack', 'shell:pack');
+    grunt.registerTask('coverage', ['shell:cover', 'shell:check_cover']);
     grunt.registerTask('coveralls', 'exec:coveralls');
-    grunt.registerTask('default', ['jslint:all', 'cafemocha']);
+    grunt.registerTask('default', ['lint', 'test']);
 };

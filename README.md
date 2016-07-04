@@ -38,14 +38,14 @@ Client:
 - SSH client (e.g. [OpenSSH](http://www.openssh.com)), configured for password-less logon to the remote host (e.g. using a private key).
 - [Node.js](http://www.nodejs.org) (of course)
 - [Bash](https://www.gnu.org/software/bash/bash.html)
-- [socat](http://www.dest-unreach.org/socat/) (only version 1.7.x is supported at the current time)
+- [socat](http://www.dest-unreach.org/socat/)
 
 Remote host:
 
 - SSH server (e.g. [OpenSSH](http://www.openssh.com))
 - Node.js (`node` command should be in the remote `PATH` of SSH sessions)
 - [Python](http://www.python.org) (it provides access to [`socketpair`](http://pubs.opengroup.org/onlinepubs/009695399/functions/socketpair.html), Node does not)
-- [socat](http://www.dest-unreach.org/socat/) (only version 1.7.x is supported at the current time)
+- [socat](http://www.dest-unreach.org/socat/)
 
 ## Installation
 
@@ -77,7 +77,7 @@ You can't pass handles to a remote child process like you can with local child p
 To test creating and communicating with remote child processes:
 
 ```shell
-grunt test --remote <host1> --remote <host2> ...
+grunt test --remote=<host1> --remote=<host2> ...
 ```
 
 You can specify as many remote hosts as you like. The test will try to create a remote child process on each host and then communicate with each one.

@@ -1,7 +1,7 @@
 {
   "name": "cp-remote",
   "description": "Remote child_process runner with message support",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/davedoesdev/cp-remote",
   "author": {
     "name": "David Halls",
@@ -18,8 +18,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "grunt lint test",
-    "travis-test": "grunt lint test coverage coveralls --remote localhost"
+    "test": "grunt lint test --remote=localhost",
+    "travis-test": "grunt lint test coverage coveralls --remote=localhost"
   },
   "directories": {
     "test": "test",
@@ -34,16 +34,16 @@
     "python"
   ],
   "devDependencies": {
-    "async": "~1.0.0",
-    "grunt": "~0.4.5",
-    "grunt-cli": "~0.1.13",
-    "grunt-jslint": "~1.1.14",
-    "grunt-cafe-mocha": "~0.1.13",
-    "grunt-apidox": "~0.1.7",
-    "chai": "~2.3.0",
-    "istanbul": "~0.3.14",
-    "grunt-exec": "~0.4.6",
-    "coveralls": "~2.11.2",
-    "yargs": "~3.10.0"
+    "async": "~1.5.2",
+    "grunt": "~1.0.1",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-mocha-test": "~0.12.7",
+    "grunt-apidox": "~0.1.9",
+    "grunt-shell": "~1.3.0",
+    "mocha": "~2.4.5",
+    "chai": "~3.5.0",
+    "istanbul": "~0.4.3",
+    "coveralls": "~2.11.9",
+    "yargs": "~4.7.1"
   }
 }
