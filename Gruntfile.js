@@ -63,6 +63,6 @@ module.exports = function (grunt)
     grunt.registerTask('docs', ['shell:diagrams', 'apidox']);
     grunt.registerTask('pack', 'shell:pack');
     grunt.registerTask('coverage', ['shell:cover', 'shell:check_cover']);
-    grunt.registerTask('coveralls', 'exec:coveralls');
+    grunt.registerTask('coveralls', 'shell:coveralls');
     grunt.registerTask('default', ['lint', 'test']);
 };
