@@ -5,9 +5,9 @@ node_js:
   - 4
   - 6
   - 8
-env:
-  - PYVER=2.7
-  - PYVER=3.6
+python:
+  - 2.7
+  - 3.6
 addons:
   apt:
     packages:
@@ -22,7 +22,6 @@ before_install:
   - mv ~/.bashrc.new ~/.bashrc
   - nvm alias default "$(nvm current)"
   - ssh localhost node --version
-  - pyenv global "$PYVER"
   - ssh localhost python --version
 script:
   - npm run travis-test
