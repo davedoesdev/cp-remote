@@ -21,9 +21,10 @@ before_install:
   - echo 'PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc.new
   - cat ~/.bashrc >> ~/.bashrc.new
   - mv ~/.bashrc.new ~/.bashrc
+  - cat ~/.bashrc
   - nvm alias default "$(nvm current)"
   - ssh localhost node --version
   - mkdir -p "$HOME/.local/bin"
   - ln -s "$(which python$PYVER)" "$HOME/.local/bin/python"
-  - ssh localhost python --version
+  - echo hello | ssh localhost python --version
 script: npm run travis-test
