@@ -6,8 +6,8 @@ node_js:
   - 6
   - 8
 env:
-  - PYVER=2
-  - PYVER=3
+  - PYENV_VERSION=2.7
+  - PYENV_VERSION=3.6
 addons:
   apt:
     packages:
@@ -18,16 +18,10 @@ before_install:
   - cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
   - ssh-keyscan -t rsa localhost >> ~/.ssh/known_hosts
   - echo . ~/.nvm/nvm.sh > ~/.bashrc.new
-  - echo 'PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc.new
   - cat ~/.bashrc >> ~/.bashrc.new
   - mv ~/.bashrc.new ~/.bashrc
-  - cat ~/.bashrc
   - nvm alias default "$(nvm current)"
   - ssh localhost node --version
   - ssh localhost python --version
-  - cat "$(which python$PYVER)"
-  - mkdir -p "$HOME/.local/bin"
-  - ln -s "$(which python$PYVER)" "$HOME/.local/bin/python"
-  - ls -l "$HOME/.local/bin"
-  - ssh localhost python --version
-script: npm run travis-test
+script:
+  - npm run travis-test
