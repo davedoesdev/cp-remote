@@ -93,7 +93,7 @@ grunt lint
 ## Code Coverage
 
 ```shell
-grunt coverage
+grunt coverage --remote=<host1> --remote=<host2> ...
 ```
 
 [Instanbul](http://gotwarlost.github.io/istanbul/) results are available [here](http://rawgit.davedoesdev.com/davedoesdev/cp-remote/master/coverage/lcov-report/index.html).
