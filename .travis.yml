@@ -25,6 +25,7 @@ before_install:
   - nvm alias default "$(nvm current)"
   - ssh localhost node --version
   - ssh localhost python --version
+  - cat "$(which python$PYVER)"
   - mkdir -p "$HOME/.local/bin"
   - ln -s "$(which python$PYVER)" "$HOME/.local/bin/python"
   - ls -l "$HOME/.local/bin"
