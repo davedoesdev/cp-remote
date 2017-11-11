@@ -24,7 +24,9 @@ before_install:
   - ssh localhost node --version
   - pyenv versions
   - pyenv global "$PYVER"
+  - which python
   - python --version
+  - ssh localhost which python
   - ssh localhost python --version
 script:
   - npm run travis-test
