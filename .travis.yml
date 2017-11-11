@@ -22,6 +22,7 @@ before_install:
   - mv ~/.bashrc.new ~/.bashrc
   - nvm alias default "$(nvm current)"
   - ssh localhost node --version
+  - pyenv versions
   - pyenv global "$PYVER"
   - ssh localhost python --version
 script:
