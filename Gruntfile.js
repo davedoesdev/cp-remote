@@ -40,7 +40,7 @@ module.exports = function (grunt)
             },
 
             cover_check: {
-                command: './node_modules/.bin/nyc check-coverage --statement 100 --branch 100 --function 100 --line 100'
+                command: './node_modules/.bin/nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100'
             },
 
             coveralls: {
