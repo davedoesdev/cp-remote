@@ -2,7 +2,7 @@
 "use strict";
 
 var crypto = require('crypto'),
-    key = new Buffer(process.argv[2], 'hex');
+    key = Buffer.from(process.argv[2], 'hex');
 
 process.nextTick(function ()
 {

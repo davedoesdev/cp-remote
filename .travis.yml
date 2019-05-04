@@ -2,9 +2,9 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - 4
-  - 6
   - 8
+  - 10
+  - 12
 env:
   - PYVER=2.7
   - PYVER=3.6

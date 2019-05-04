@@ -126,7 +126,7 @@ function run(host, module_path)
             { stdio: [0, 1, 2, 'ipc'] });
 
     child.send(packed.toString());
-    child.send(new Buffer(JSON.stringify(
+    child.send(Buffer.from(JSON.stringify(
         Array.prototype.slice.call(arguments, 2))).toString('hex'));
 
     return child;
