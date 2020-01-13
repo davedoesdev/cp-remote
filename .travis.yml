@@ -1,10 +1,10 @@
-sudo: required
-dist: trusty
+dist: bionic
 language: node_js
 node_js:
   - 8
   - 10
   - 12
+  - 13
 env:
   - PYVER=2.7
   - PYVER=3.6
