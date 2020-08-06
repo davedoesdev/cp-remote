@@ -1,7 +1,7 @@
 {
   "name": "cp-remote",
   "description": "Remote child_process runner with message support",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/davedoesdev/cp-remote",
   "author": {
     "name": "David Halls",
@@ -34,16 +34,16 @@
     "python"
   ],
   "devDependencies": {
-    "async": "^3.1.0",
-    "grunt": "^1.0.4",
+    "async": "^3.2.0",
+    "grunt": "^1.2.1",
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-mocha-test": "^0.13.3",
-    "grunt-apidox": "^2.0.7",
+    "grunt-apidox": "^2.0.9",
     "grunt-shell": "^3.0.1",
-    "mocha": "^7.0.0",
+    "mocha": "^8.1.1",
     "chai": "^4.2.0",
-    "nyc": "^15.0.0",
-    "coveralls": "^3.0.9",
-    "yargs": "^15.1.0"
+    "nyc": "^15.1.0",
+    "coveralls": "^3.1.0",
+    "yargs": "^15.4.1"
   }
 }
