@@ -1,5 +1,5 @@
 TN:
-SF:/home/david/cp-remote/index.js
+SF:index.js
 FN:121,run
 FNF:1
 FNH:1
@@ -18,7 +18,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/david/cp-remote/packed.js
+SF:packed.js
 FNF:0
 FNH:0
 DA:1,1

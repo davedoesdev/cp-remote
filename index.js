@@ -97,7 +97,7 @@ grunt lint
 grunt coverage --remote=<host1> --remote=<host2> ...
 ```
 
-[Instanbul](http://gotwarlost.github.io/istanbul/) results are available [here](http://rawgit.davedoesdev.com/davedoesdev/cp-remote/master/coverage/lcov-report/index.html).
+[Istanbul](http://gotwarlost.github.io/istanbul/) results are available [here](http://rawgit.davedoesdev.com/davedoesdev/cp-remote/master/coverage/lcov-report/index.html).
 
 Coveralls page is [here](https://coveralls.io/r/davedoesdev/cp-remote).
 
