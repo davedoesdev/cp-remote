@@ -38,7 +38,7 @@ jobs:
         run: npx grunt lint
 
       - name: Coverage
-        run: npm coverage
+        run: npm run coverage
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
