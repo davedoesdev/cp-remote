@@ -25,6 +25,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Install packages
+        run: npm install
+
       - name: Pack
         run: |
           mv packed.js packed.js.orig
