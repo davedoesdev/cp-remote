@@ -19,7 +19,7 @@ jobs:
         run: sudo apt update
 
       - name: Install OS dependencies
-        run: sudo apt install socat openssh-server
+        run: sudo apt install socat
 
       - name: Use Node ${{ matrix.node-version }}
         uses: actions/setup-node@v2
