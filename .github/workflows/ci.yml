@@ -39,6 +39,7 @@ jobs:
           chmod 600 ~/.ssh/*
           chmod 700 ~/.ssh
           chmod 755 ~/
+          echo v${{ matrix.node-version }}
           test $(node --version) = v${{ matrix.node-version }}
           test $(python --version) = "Python ${{ matrix.python-version }}"
           node_ver=$(ssh localhost node --version)
