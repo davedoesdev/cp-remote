@@ -39,7 +39,7 @@ jobs:
           ls -al ~
           chmod 600 ~/.ssh/authorized_keys
           chmod 700 ~/.ssh
-          sudo chmod -c 0755 ~/
+          sudo chmod -c 755 ~/
           ls -al ~
           ssh localhost node --version
           ssh localhost python --version
