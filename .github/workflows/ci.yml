@@ -39,8 +39,9 @@ jobs:
           chmod 600 ~/.ssh/*
           chmod 700 ~/.ssh
           chmod 755 ~/
+          node --version
           ssh localhost node --version
-          pyenv versions
+          python --version
           ssh localhost python --version
 
       - name: Install packages
