@@ -33,6 +33,19 @@ jobs:
 
       - name: Setup SSH
         run: |
+          cat > sshd_config <<EOF
+            SyslogFacility AUTHPRIV
+            PermitRootLogin yes
+            AuthorizedKeysFile .ssh/authorized_keys
+            PasswordAuthentication yes
+            ChallengeResponseAuthentication no
+            UsePAM yes
+            UseDNS no
+            X11Forwarding no
+            PrintMotd no
+          EOF
+          sudo mv sshd_config /etc/ssh/sshd_config
+          sudo systemctl restart ssh
           ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''
           cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
           ssh-keyscan -t rsa localhost >> ~/.ssh/known_hosts
