@@ -36,11 +36,9 @@ jobs:
           ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''
           cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
           ssh-keyscan -t rsa localhost >> ~/.ssh/known_hosts
-          ls -al ~
-          chmod 600 ~/.ssh/authorized_keys
+          chmod 600 ~/.ssh/*
           chmod 700 ~/.ssh
-          sudo chmod -c 755 ~/
-          ls -al ~
+          chmod 755 ~/
           ssh localhost node --version
           ssh localhost python --version
 
