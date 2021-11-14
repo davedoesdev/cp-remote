@@ -39,10 +39,13 @@ jobs:
           chmod 600 ~/.ssh/*
           chmod 700 ~/.ssh
           chmod 755 ~/
-          test $(node --version) = ${{ matrix.node-version }}
-          test $(python --version) = ${{ matrix.python-version }}
-          test $(ssh localhost node --version) = ${{ matrix.node-version }}
-          test $(ssh localhost python --version) = ${{ matrix.python-version }}
+          test $(node --version) = v${{ matrix.node-version }}
+          test $(python --version) = "Python ${{ matrix.python-version }}"
+          node_ver=$(ssh localhost node --version)
+          python_ver=$(ssh localhost python --version)
+          echo $node_ver $python_ver
+          test $node_ver = v${{ matrix.node-version }}
+          test $python_ver = "Python ${{ matrix.python-version }}"
 
       - name: Install packages
         run: npm install
