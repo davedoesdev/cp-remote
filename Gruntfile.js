@@ -1,6 +1,8 @@
 /*jslint node: true */
 "use strict";
 
+const c8 = "npx c8 -x Gruntfile.js -x 'test/**'";
+
 var remote_index = -1;
 for (var i = 0; i < process.argv.length; i += 1)
 {
@@ -16,7 +18,10 @@ module.exports = function (grunt)
     grunt.initConfig(
     {
         jshint: {
-            src: [ 'Gruntfile.js', 'index.js', 'test/**/*.js' ]
+            src: [ 'Gruntfile.js', 'index.js', 'test/**/*.js' ],
+            options: {
+                esversion: 9
+            }
         },
 
         mochaTest: {
@@ -30,45 +35,40 @@ module.exports = function (grunt)
             extraHeadingLevels: 1
         },
 
-        shell: {
+        exec: Object.fromEntries(Object.entries({
             cover: {
-                command: "./node_modules/.bin/nyc -x Gruntfile.js -x 'test/**' ./node_modules/.bin/grunt test " + (remote_index < 0 ? '' : process.argv.slice(remote_index).join(' '))
+                cmd: `${c8} npx grunt test ${remote_index < 0 ? '' : process.argv.slice(remote_index).join(' ')}`
             },
 
             cover_report: {
-                command: './node_modules/.bin/nyc report -r lcov'
+                cmd: `${c8} report -r lcov`
             },
 
             cover_check: {
-                command: './node_modules/.bin/nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100'
-            },
-
-            coveralls: {
-                command: 'cat coverage/lcov.info | coveralls'
+                cmd: `${c8} check-coverage --statements 100 --branches 100 --functions 100 --lines 100`
             },
 
             diagrams: {
-                command: 'dot diagrams/how_it_works.dot -Tsvg -odiagrams/how_it_works.svg'
+                cmd: 'dot diagrams/how_it_works.dot -Tsvg -odiagrams/how_it_works.svg'
             },
 
             pack: {
                 command: './pack.sh'
             }
-        }
+        }).map(([k, v]) => [k, { stdio: 'inherit', ...v }]))
     });
     
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-apidox');
-    grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-exec');
 
     grunt.registerTask('lint', 'jshint');
+    grunt.registerTask('pack', 'exec:pack');
     grunt.registerTask('test', 'mochaTest');
-    grunt.registerTask('docs', ['shell:diagrams', 'apidox']);
-    grunt.registerTask('pack', 'shell:pack');
-    grunt.registerTask('coverage', ['shell:cover',
-                                    'shell:cover_report',
-                                    'shell:cover_check']);
-    grunt.registerTask('coveralls', 'shell:coveralls');
+    grunt.registerTask('docs', ['exec:diagrams', 'apidox']);
+    grunt.registerTask('coverage', ['exec:cover',
+                                    'exec:cover_report',
+                                    'exec:cover_check']);
     grunt.registerTask('default', ['lint', 'test']);
 };

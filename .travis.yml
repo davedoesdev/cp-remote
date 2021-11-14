@@ -27,5 +27,8 @@ before_install:
   - pyenv versions
   - pyenv global "$PYVER"
   - ssh localhost python --version
+we should also pack and check nothing changes
+run npx grunt lint
+run npm coverage
 script:
   - npm run travis-test
