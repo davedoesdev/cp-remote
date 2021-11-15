@@ -44,12 +44,11 @@ jobs:
         run: |
           test "$(node --version | cut -d . -f 1)" = "v${{ matrix.node-version }}"
           test "$(python --version 2>&1 | cut -d . -f 1,2)" = "Python ${{ matrix.python-version }}"
+          echo "PATH=\"$(dirname "$(which node)"):\$PATH\"" >> ~/.bashrc
+          cat ~/.bashrc
           node_ver="$(ssh localhost node --version)"
           python_ver="$(ssh localhost python --version)"
           echo "Node $node_ver, $python_ver"
-          echo "$PATH"
-          which node
-          which npm
           test "$(echo "node_ver" | cut -d . -f 1)" = "v${{ matrix.node-version }}"
           test "$(echo "python_ver" | cut -d . -f 1,2)" = "Python ${{ matrix.python-version }}"
 
