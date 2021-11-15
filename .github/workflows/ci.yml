@@ -48,7 +48,7 @@ jobs:
           cat ~/.bashrc >> ~/.bashrc.new
           mv ~/.bashrc.new ~/.bashrc
           node_ver="$(ssh localhost node --version)"
-          python_ver="$(ssh localhost python --version)"
+          python_ver="$(ssh localhost python --version 2>&1)"
           echo "Node $node_ver, $python_ver"
           test "$(echo "node_ver" | cut -d . -f 1)" = "v${{ matrix.node-version }}"
           test "$(echo "python_ver" | cut -d . -f 1,2)" = "Python ${{ matrix.python-version }}"
