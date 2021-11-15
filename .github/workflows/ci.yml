@@ -48,6 +48,8 @@ jobs:
           echo "echo \"\$PATH\"" >> ~/.bashrc
           cat ~/.bashrc
           ssh localhost which node
+          ssh localhost 'echo $PATH'
+          ssh localhost 'echo $SHELL'
           node_ver="$(ssh localhost node --version)"
           python_ver="$(ssh localhost python --version)"
           echo "Node $node_ver, $python_ver"
