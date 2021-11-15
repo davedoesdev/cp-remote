@@ -39,10 +39,13 @@ jobs:
           chmod 600 ~/.ssh/*
           chmod 700 ~/.ssh
           chmod 755 ~/
+
+      - name: Check versions
+        run: |
           echo A
           test "$(node --version | cut -d . -f 1)" = "v${{ matrix.node-version }}"
           echo B
-          test "$(python --version)" = "Python ${{ matrix.python-version }}"
+          test "$(python --version 2>&1 | cut -d . -f 1,2)" = "Python ${{ matrix.python-version }}"
           echo C
           node_ver="$(ssh localhost node --version)"
           echo D
@@ -52,7 +55,7 @@ jobs:
           echo F
           test "$(echo "node_ver" | cut -d . -f 1)" = "v${{ matrix.node-version }}"
           echo G
-          test "$python_ver" = "Python ${{ matrix.python-version }}"
+          test "$(echo "python_ver" | cut -d . -f 1,2)" = "Python ${{ matrix.python-version }}"
           echo H
 
       - name: Install packages
