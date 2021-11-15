@@ -47,6 +47,7 @@ jobs:
           echo "PATH=\"$(dirname "$(which node)"):\$PATH\"" >> ~/.bashrc
           echo "echo \"\$PATH\"" >> ~/.bashrc
           cat ~/.profile
+          ssh localhost 'echo $PATH'
           ssh localhost which node
           node_ver="$(ssh localhost node --version)"
           python_ver="$(ssh localhost python --version)"
