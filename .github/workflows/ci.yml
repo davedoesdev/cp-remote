@@ -36,6 +36,7 @@ jobs:
           ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''
           cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
           ssh-keyscan -t rsa localhost >> ~/.ssh/known_hosts
+          echo "PATH=\"$(dirname "$(which node)"):\$PATH\"" >> ~/.ssh/rc
           chmod 600 ~/.ssh/*
           chmod 700 ~/.ssh
           chmod 755 ~/
@@ -44,9 +45,6 @@ jobs:
         run: |
           test "$(node --version | cut -d . -f 1)" = "v${{ matrix.node-version }}"
           test "$(python --version 2>&1 | cut -d . -f 1,2)" = "Python ${{ matrix.python-version }}"
-          echo "PATH=\"$(dirname "$(which node)"):\$PATH\"" >> ~/.bashrc
-          echo "echo \"\$PATH\"" >> ~/.bashrc
-          cat /etc/ssh/sshd_config
           ssh localhost 'echo $PATH'
           ssh localhost which node
           node_ver="$(ssh localhost node --version)"
