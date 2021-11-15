@@ -42,21 +42,16 @@ jobs:
 
       - name: Check versions
         run: |
-          echo A
           test "$(node --version | cut -d . -f 1)" = "v${{ matrix.node-version }}"
-          echo B
           test "$(python --version 2>&1 | cut -d . -f 1,2)" = "Python ${{ matrix.python-version }}"
-          echo C
           node_ver="$(ssh localhost node --version)"
-          echo D
           python_ver="$(ssh localhost python --version)"
-          echo E
           echo "Node $node_ver, $python_ver"
-          echo F
+          echo "$PATH"
+          which node
+          which npm
           test "$(echo "node_ver" | cut -d . -f 1)" = "v${{ matrix.node-version }}"
-          echo G
           test "$(echo "python_ver" | cut -d . -f 1,2)" = "Python ${{ matrix.python-version }}"
-          echo H
 
       - name: Install packages
         run: npm install
