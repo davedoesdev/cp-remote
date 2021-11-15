@@ -43,8 +43,8 @@ jobs:
           test "$(python --version)" = "Python ${{ matrix.python-version }}"
           node_ver="$(ssh localhost node --version)"
           python_ver="$(ssh localhost python --version)"
-          echo "$node_ver" "$python_ver"
-          test "$node_ver" = "v${{ matrix.node-version }}"
+          echo "Node $node_ver, $python_ver"
+          test "$(echo "node_ver" | cut -d . -f 1)" = "v${{ matrix.node-version }}"
           test "$python_ver" = "Python ${{ matrix.python-version }}"
 
       - name: Install packages
