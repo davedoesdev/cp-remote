@@ -46,6 +46,7 @@ jobs:
           test "$(python --version 2>&1 | cut -d . -f 1,2)" = "Python ${{ matrix.python-version }}"
           echo "PATH=\"$(dirname "$(which node)"):\$PATH\"" >> ~/.bashrc
           cat ~/.bashrc
+          ssh localhost which node
           node_ver="$(ssh localhost node --version)"
           python_ver="$(ssh localhost python --version)"
           echo "Node $node_ver, $python_ver"
