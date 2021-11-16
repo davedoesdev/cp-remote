@@ -1,5 +1,5 @@
 /**
-# cp-remote&nbsp;&nbsp;&nbsp;[![Build Status](https://travis-ci.org/davedoesdev/cp-remote.png)](https://travis-ci.org/davedoesdev/cp-remote) [![Coverage Status](https://coveralls.io/repos/davedoesdev/cp-remote/badge.png?branch=master)](https://coveralls.io/r/davedoesdev/cp-remote?branch=master) [![NPM version](https://badge.fury.io/js/cp-remote.png)](http://badge.fury.io/js/cp-remote)
+# cp-remote&nbsp;&nbsp;&nbsp;[![Build Status](https://github.com/davedoesdev/cp-remote/actions/workflows/ci.yml/badge.svg)](https://github.com/davedoesdev/cp-remote/actions/workflows/ci.yml) [![Coverage Status](https://coveralls.io/repos/davedoesdev/cp-remote/badge.png?branch=master)](https://coveralls.io/r/davedoesdev/cp-remote?branch=master) [![NPM version](https://badge.fury.io/js/cp-remote.png)](http://badge.fury.io/js/cp-remote)
 
 Node.js [`child_process`](http://nodejs.org/api/child_process.html) done remotely, IPC channel intact!
 
@@ -97,7 +97,7 @@ grunt lint
 grunt coverage --remote=<host1> --remote=<host2> ...
 ```
 
-[Istanbul](http://gotwarlost.github.io/istanbul/) results are available [here](http://rawgit.davedoesdev.com/davedoesdev/cp-remote/master/coverage/lcov-report/index.html).
+[c8](https://github.com/bcoe/c8) results are available [here](http://rawgit.davedoesdev.com/davedoesdev/cp-remote/master/coverage/lcov-report/index.html).
 
 Coveralls page is [here](https://coveralls.io/r/davedoesdev/cp-remote).
 
