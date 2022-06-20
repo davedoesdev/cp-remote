@@ -65,7 +65,7 @@ You can't pass handles to a remote child process like you can with local child p
 - `cp-remote` calls [`child_process.spawn`](http://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) to run a Bash script, [`cp-remote.sh`](cp-remote.sh). The IPC channel will be on `$NODE_CHANNEL_FD`.
 - `cp-remote.sh` runs `socat`, telling it to relay data between `$NODE_CHANNEL_FD` and an SSH connection to the remote host.
 - The SSH connection is told to start [`cp-remote.py`](cp-remote.py) on the remote host.
-- `cp-remote.py` calls [`socket.socketpair`](http://docs.python.org/2.7/library/socket.html#socket.socketpair) to create a pair of connected file descriptors (Unix domain sockets).
+- `cp-remote.py` calls [`socket.socketpair`](http://docs.python.org/3/library/socket.html#socket.socketpair) to create a pair of connected file descriptors (Unix domain sockets).
 - `cp-remote.py` starts `socat`, telling it to relay data between standard input (i.e. the SSH connection) and one of the connected file descriptors.
 - `cp-remote.py` sets `NODE_CHANNEL_FD` to the other connected file descriptor and starts `node`, telling it to run the module you specified.
 
