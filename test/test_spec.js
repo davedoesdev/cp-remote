@@ -1,18 +1,20 @@
-/*globals describe: false,
-          it: false */
-/*jslint node: true, nomen: true */
+/*jslint node: true, nomen: true, mocha: true */
 "use strict";
 
 var path = require('path'),
     crypto = require('crypto'),
     argv = require('yargs').argv,
-    expect = require('chai').expect,
+    expect,
     async = require('async'),
     cp_remote = require('..'),
     // assume same location on each remote host
     remote = path.join(__dirname, 'remote.js');
 
 function expr(v) { return v; }
+
+before(async function () {
+    ({ expect } = await import('chai'));
+});
 
 function test(hosts, done)
 {
